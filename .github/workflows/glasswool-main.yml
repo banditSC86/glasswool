@@ -64,7 +64,7 @@ jobs:
 #          cache-downloads: true
 #          cache-env: true
           environment-file: conda-linux-64.lock
-#           environment-name: glasswool
+          environment-name: glasswool
 #          micromamba-version: "*"
           micromamba-channel: conda-forge
 #          micromamba-args: "--strict-channel-priority"
