@@ -75,6 +75,7 @@ jobs:
       - name: activate mamba environment
         run: |
           set -euo pipefail
+          conda init bash
           conda activate glasswool
 
       - uses: syphar/restore-pip-download-cache@v1
