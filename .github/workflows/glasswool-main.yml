@@ -76,6 +76,7 @@ jobs:
         run: |
           set -euo pipefail
           conda init bash
+          bash
           conda activate glasswool
 
       - uses: syphar/restore-pip-download-cache@v1
