@@ -1,0 +1,9 @@
+.mypy_cache
+.pytest_cache
+.ruff_cache
+docs/release_notes.md
+docs/api/common/top_level.md
+docs/SUMMARY.md
+site
+poetry.lock
+babeldata
