@@ -64,9 +64,11 @@ jobs:
       - name: Install Conda environment from environment.yml
         uses: mamba-org/provision-with-micromamba@main
         with:
-#          cache-downloads: true
-#          cache-env: true
+          cache-downloads: true
+          cache-env: true
           environment-file: conda-linux-64.lock
+# for matrix should be
+#         environmant-file: python-version: conda-${{matrix.platform}}-${{ matrix.python-version }}.lock
           environment-name: glasswool
 #          micromamba-version: "*"
           micromamba-channel: conda-forge
@@ -84,22 +86,21 @@ jobs:
           requirement_files: poetry.lock
           custom_cache_key_element: no-backends-${{ steps.install_python.outputs.python-version }}
 
-#      - run: python -m pip install --upgrade pip 'poetry<1.4'
-
       - uses: syphar/restore-virtualenv@v1
         with:
           requirement_files: poetry.lock
           custom_cache_key_element: core
 
-      - name: install ${{ matrix.os }} system dependencies
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          set -euo pipefail
-          sudo apt-get update -y -q
-          sudo apt-get install -y -q build-essential graphviz libgeos-dev
-      - name: install ${{ matrix.os }} system dependencies
-        if: matrix.os == 'windows-latest'
-        run: choco install graphviz
+# Don't think I need these but handy to know how to do it
+#      - name: install ${{ matrix.os }} system dependencies
+#        if: matrix.os == 'ubuntu-latest'
+#        run: |
+#          set -euo pipefail
+#          sudo apt-get update -y -q
+#          sudo apt-get install -y -q build-essential graphviz libgeos-dev
+#      - name: install ${{ matrix.os }} system dependencies
+#        if: matrix.os == 'windows-latest'
+#        run: choco install graphviz
 
       - name: install glasswool
         run: poetry install --without dev --without docs
