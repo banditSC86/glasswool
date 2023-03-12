@@ -102,18 +102,19 @@ jobs:
 
       - name: run all core tests and run benchmarks once parallel
         if: matrix.os != 'windows-latest'
-        run: just ci-check -m "'core or benchmark'" -n auto
+        run: just ci-check
+#        run: just ci-check -m "'core or benchmark'" -n auto
 
-      - name: upload code coverage
-        if: success()
-        uses: codecov/codecov-action@v3
-        with:
-          flags: core,${{ runner.os }},python-${{ steps.install_python.outputs.python-version }}
+#      - name: upload code coverage
+#        if: success()
+#        uses: codecov/codecov-action@v3
+#        with:
+#          flags: core,${{ runner.os }},python-${{ steps.install_python.outputs.python-version }}
 
-      - name: publish test report
-        uses: actions/upload-artifact@v3
-        if: success() || failure()
-        with:
-          name: no-backends-${{ matrix.os }}-${{ matrix.python-version }}
-          path: junit.xml
+#      - name: publish test report
+#        uses: actions/upload-artifact@v3
+#        if: success() || failure()
+#        with:
+#          name: no-backends-${{ matrix.os }}-${{ matrix.python-version }}
+#          path: junit.xml
 
