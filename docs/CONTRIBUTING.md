@@ -1,4 +1,4 @@
-# Contributing to Babel
+# Contributing to glasswool
 
 We love new contributors!
 

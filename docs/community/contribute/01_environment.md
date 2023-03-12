@@ -35,22 +35,22 @@ hide:
             nix-env -iA gh
             ```
 
-    1. Fork and clone the babel repository:
+    1. Fork and clone the glasswool repository:
 
         ```sh
-        gh repo fork --clone --remote hotlogical/babel-data
+        gh repo fork --clone --remote banditSC86/glasswool
         ```
 
-    1. Set up the public `babel` Cachix cache to pull pre-built dependencies:
+    1. Set up the public `glasswool` Cachix cache to pull pre-built dependencies:
 
         ```sh
-        nix-shell -p cachix --run 'cachix use babel'
+        nix-shell -p cachix --run 'cachix use glasswool'
         ```
 
     1. Run `nix-shell` in the checkout directory:
 
         ```sh
-        cd babel-data
+        cd glasswool
         nix-shell
         ```
 
@@ -84,10 +84,10 @@ hide:
             {{ manager }} install -c conda-forge gh
             ```
 
-        1. Fork and clone the babel repository:
+        1. Fork and clone the glasswool repository:
 
             ```sh
-            gh repo fork --clone --remote hotlogical/babel-data
+            gh repo fork --clone --remote banditSC86/glasswool
             ```
 
         1. Create a Conda environment from a lock file in the repo:
@@ -97,21 +97,21 @@ hide:
             === "{{ os }}"
 
                 ```sh
-                cd babel-data
-                {{ manager }} create -n babel-dev --file=conda-lock/{{ platform }}-64-3.9.lock
+                cd glasswool
+                {{ manager }} create -n glasswool-dev --file=conda-lock/{{ platform }}-64-3.9.lock
                 ```
             {% endfor %}
 
         1. Activate the environment
 
             ```sh
-            {{ manager }} activate babel-dev
+            {{ manager }} activate glasswool-dev
             ```
 
-        1. Install your local copy of `babel` into the Conda environment.
+        1. Install your local copy of `glasswool` into the Conda environment.
 
             ```sh
-            cd babel-data
+            cd glasswool
             pip install -e .
             ```
 
@@ -135,16 +135,16 @@ hide:
 
     1. [Install `gh`](https://cli.github.com/manual/installation)
 
-    1. Fork and clone the babel repository:
+    1. Fork and clone the glasswool repository:
 
         ```sh
-        gh repo fork --clone --remote hotlogical/babel-data
+        gh repo fork --clone --remote banditSC86/glasswool
         ```
 
-    1. Change directory into `babel-data`:
+    1. Change directory into `glasswool`:
 
         ```sh
-        cd babel-data
+        cd glasswool
         ```
 
     1. Install development dependencies
@@ -154,7 +154,7 @@ hide:
         pip install -r requirements.txt
         ```
 
-    1. Install babel in development mode
+    1. Install glasswool in development mode
 
         ```sh
         pip install -e .

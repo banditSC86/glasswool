@@ -1,4 +1,4 @@
-# Contribute to the Babel Codebase
+# Contribute to the glasswool Codebase
 
 ## Getting started
 
@@ -21,8 +21,8 @@ pytest -m core
 
 !!! info "You may be able to skip this section"
 
-    If you haven't made changes to the core of babel (e.g., `babel/expr`)
-    or any specific backends (`babel/backends`) this material isn't necessary to
+    If you haven't made changes to the core of glasswool (e.g., `glasswool/expr`)
+    or any specific backends (`glasswool/backends`) this material isn't necessary to
     follow to make a pull request.
 
 First, we need to download example data to run the tests successfully:
@@ -53,12 +53,12 @@ If anything seems amiss with a backend, you can of course test it locally:
 
 ```sh
 export PGPASSWORD=postgres
-psql -t -A -h localhost -U postgres -d babel_testing -c "select 'success'"
+psql -t -A -h localhost -U postgres -d glasswool_testing -c "select 'success'"
 ```
 
 ## Writing the commit
 
-Babel follows the [Conventional Commits](https://www.conventionalcommits.org/) structure.
+glasswool follows the [Conventional Commits](https://www.conventionalcommits.org/) structure.
 In brief, the commit summary should look like:
 
     fix(types): make all floats doubles
@@ -76,4 +76,4 @@ The type (e.g. `fix`) can be:
 
 ## Submit a PR
 
-Babel follows the standard Git Pull Request process. The team will review the PR and merge when it's ready.
+glasswool follows the standard Git Pull Request process. The team will review the PR and merge when it's ready.

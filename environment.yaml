@@ -1,0 +1,12 @@
+name: glasswool
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.10.* # don't specify the version, use the latest stable Python
+  - mamba
+  - pip # pip must be mentioned explicitly, or conda-lock will fail
+  - poetry=1.*
+
+platforms:
+  - linux-64

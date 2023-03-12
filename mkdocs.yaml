@@ -1,7 +1,7 @@
-site_name: babel
-site_url: https://babel-data.io
+site_name: glass wool
+site_url: https://github.io/banditSC86/glasswool
 edit_uri: ""
-repo_url: https://github.com/hotlogical/babel-data
+repo_url: https://github.com/banditSC86/glasswool
 extra_css:
   - stylesheets/extra.css
 extra_javascript:
@@ -24,11 +24,11 @@ theme:
     - search.suggest
   icon:
     repo: fontawesome/brands/github
-  logo: static/icons/babel.png
-  favicon: static/icons/babel.png
+  logo: static/icons/filter.png
+  favicon: static/icons/filter.png
   palette:
     scheme: slate
-    primary: purple
+    primary: green
     accent: lime
 plugins:
   - search
@@ -107,23 +107,23 @@ markdown_extensions:
       permalink: true
       permalink_title: "Anchor link to this section for reference"
 extra:
-  project_name: "babel"
+  project_name: "glasswool"
   team:
     - name: "Maintainers"
       members:
-        - hotlogical
+        - bantidSC86
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/hotlogical/babel-data/discussions
+      link: https://github.com/banditSC86/glasswool/discussions
     - icon: fontawesome/brands/gitter
-      link: https://gitter.im/babel-data/Lobby
+      link: https://gitter.im/glasswool/Lobby
     - icon: fontawesome/brands/stack-overflow
-      link: https://stackoverflow.com/questions/tagged/babel
+      link: https://stackoverflow.com/questions/tagged/glasswool
   support_levels:
     supported:
       icon: :material-check-decagram:{ .verified }
       description: Tested in CI. If this doesn't work for you, please
-        [file an issue](https://github.com/hotlogical/babeldata/issues/new).
+        [file an issue](https://github.com/bantidSC86/glasswool/issues/new).
     bug:
       icon: :material-bug:{ .bug }
       description: Should work but doesn't because upstream is broken.
@@ -132,4 +132,4 @@ extra:
       icon: :material-cancel:{ .cancel }
       description: Unlikely to ever be supported or no upstream support.
 
-copyright: "Copyright &copy; 2014-2022"
+copyright: "Copyright &copy; 2023, banditSC86. All rights reserved."

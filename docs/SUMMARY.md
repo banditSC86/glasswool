@@ -7,9 +7,9 @@
         * [Data Types](index.md)
         * [Schemas](index.md)
         * [Configuration](index.md)
-    * [Babel for pandas Users](babel-for-pandas-users.ipynb)
+    * [glass wool for pandas Users](glasswool.ipynb)
 * [Releases](index.md)
 * Blog
-    * [Welcome to Babel](blog/welcome.md)
+    * [Welcome to glasswool](blog/welcome.md)
 * [Community](community/index.md)
     * [Contribute](CONTRIBUTING.md)

@@ -89,7 +89,7 @@ def _glass_wool(
     return x
 
 
-def glass_wool(
+def glasswool(
     x_in: np.ndarray, maxstd: float | Tuple[float, float], side: str = "both"
 ) -> np.ndarray:
     """Iteratively remove outliers from data.
@@ -130,17 +130,17 @@ def glass_wool(
 
     Only cut upper outliers:
 
-    >>> glass_wool(x, 2.0, side='upper')
+    >>> glasswool(x, 2.0, side='upper')
     array([  1., 442., 443., 444., 445., 446., 447., 448., 449.,  nan])
 
     Only cut lower outliers:
 
-    >>> glass_wool(x, 2.0, side='lower')
+    >>> glasswool(x, 2.0, side='lower')
     array([ nan, 442., 443., 444., 445., 446., 447., 448., 449., 900.])
 
     Use asymmetric upper and lower limits:
 
-    >>> glass_wool(x, (2.0, 4.0), 'both')
+    >>> glasswool(x, (2.0, 4.0), 'both')
     array([ nan, 442., 443., 444., 445., 446., 447., 448., 449., 900.])
 
     Notes
@@ -170,4 +170,4 @@ def glass_wool(
 if __name__ == '__main__':
     x = np.random.randn(100)
     x[4] = np.nan
-    glass_wool(x, 2.0, side='both')
+    glasswool(x, 2.0, side='both')
