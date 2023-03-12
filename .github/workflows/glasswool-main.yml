@@ -61,15 +61,15 @@ jobs:
       - name: Install Conda environment from environment.yml
         uses: mamba-org/provision-with-micromamba@main
         with:
-          cache-downloads: true
-          cache-env: true
+#          cache-downloads: true
+#          cache-env: true
           environment-file: conda-linux-64.lock
 #           environment-name: glasswool
-          micromamba-version: "*"
+#          micromamba-version: "*"
           micromamba-channel: conda-forge
-          micromamba-args: "--strict-channel-priority"
-          extra-specs: |
-            python=3.10
+#          micromamba-args: "--strict-channel-priority"
+#          extra-specs: |
+#            python=3.10
 
       - uses: syphar/restore-pip-download-cache@v1
         with:
