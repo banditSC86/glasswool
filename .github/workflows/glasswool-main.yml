@@ -94,7 +94,7 @@ jobs:
         run: choco install graphviz
 
       - name: install glasswool
-        run: poetry install --without dev --without docs --extras visualization
+        run: poetry install --without dev --without docs
 
       - uses: extractions/setup-just@v1
         env:
