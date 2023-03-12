@@ -37,6 +37,9 @@ jobs:
     env:
       SQLALCHEMY_WARN_20: "1"
     runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash -l {0}
     strategy:
       fail-fast: false
       matrix:
@@ -74,10 +77,7 @@ jobs:
       # Change env to glasswool to pick up poetry from there
       - name: activate mamba environment
         run: |
-          set -euo pipefail
-          conda init bash
-          bash
-          conda activate glasswool
+          mamba env export
 
       - uses: syphar/restore-pip-download-cache@v1
         with:
