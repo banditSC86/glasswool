@@ -80,6 +80,7 @@ jobs:
       - name: activate mamba environment
         run: |
           mamba env export
+          python --version
 
       - uses: syphar/restore-pip-download-cache@v1
         with:
