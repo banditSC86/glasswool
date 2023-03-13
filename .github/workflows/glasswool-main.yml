@@ -111,6 +111,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: run all core tests and run benchmarks once parallel
+        env:
+          NUMBA_DISABLE_JIT: 1
         if: matrix.os != 'windows-latest'
         run: just ci-check
 #        run: just ci-check -m "'core or benchmark'" -n auto
