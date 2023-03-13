@@ -124,10 +124,10 @@ jobs:
         with:
           flags: core,${{ runner.os }},python-${{ steps.install_python.outputs.python-version }}
 
-#      - name: publish test report
-#        uses: actions/upload-artifact@v3
-#        if: success() || failure()
-#        with:
-#          name: no-backends-${{ matrix.os }}-${{ matrix.python-version }}
-#          path: junit.xml
+      - name: publish test report
+        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          name: no-backends-${{ matrix.os }}-${{ matrix.python-version }}
+          path: junit.xml
 
