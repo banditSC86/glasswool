@@ -111,6 +111,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: run all core tests and run benchmarks once parallel
+        # Don't jit functions for coverage
         env:
           NUMBA_DISABLE_JIT: 1
         if: matrix.os != 'windows-latest'
