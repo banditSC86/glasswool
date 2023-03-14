@@ -71,7 +71,9 @@ jobs:
 #         environmant-file: python-version: conda-${{matrix.platform}}-${{ matrix.python-version }}.lock
           environment-name: glasswool
 #          micromamba-version: "*"
-          micromamba-channel: conda-forge
+          channels:
+            conda-forge
+            nodefaults
 #          micromamba-args: "--strict-channel-priority"
 #          extra-specs: |
 #            python=3.10
