@@ -11,5 +11,5 @@ poetry version "$version"
 poetry build
 
 # ensure that the built wheel has the correct version number
-unzip -p "dist/ibis_framework-${version}-py3-none-any.whl" ibis/__init__.py | \
+unzip -p "dist/banditSC86-${version}-py3-none-any.whl" glasswool/__init__.py | \
   grep -q "__version__ = \"$version\""
