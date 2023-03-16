@@ -10,3 +10,8 @@ Outlier filter
 
 
 Recursively filter outliers 
+
+## Installation
+
+```pip install glasswool```
+
