@@ -28,14 +28,43 @@ jobs:
           fetch-depth: 0
           token: ${{ steps.generate_token.outputs.token }}
 
-#      - uses: cachix/install-nix-action@v20
+      - name: Install Conda environment from environment.yml
+        uses: mamba-org/provision-with-micromamba@main
+        with:
+          cache-downloads: true
+          cache-env: true
+          environment-file: conda-linux-64.lock
+# for matrix should be
+#         environmant-file: python-version: conda-${{matrix.platform}}-${{ matrix.python-version }}.lock
+          environment-name: glasswool
+          channels:
+            conda-forge
+            nodefaults
+
+      # Change env to glasswool to pick up poetry from there
+      - name: activate mamba environment
+        run: |
+          mamba env export
+          python -V -V
+
+#      - uses: syphar/restore-pip-download-cache@v1
 #        with:
-#          extra_nix_config: |
-#            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-#      - uses: cachix/cachix-action@v12
+#          requirement_files: poetry.lock
+#          custom_cache_key_element: no-backends-${{ steps.install_python.outputs.python-version }}
+#
+#      - uses: syphar/restore-virtualenv@v1
 #        with:
-#          name: ibis
-#          extraPullNames: nix-community,poetry2nix
+#          requirement_files: poetry.lock
+#          custom_cache_key_element: core
+
+##      - uses: cachix/install-nix-action@v20
+##        with:
+##          extra_nix_config: |
+##            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+##      - uses: cachix/cachix-action@v12
+##        with:
+##          name: ibis
+##          extraPullNames: nix-community,poetry2nix
 
       - name: run semantic-release
         run: ./ci/release/run.sh
