@@ -1,6 +1,14 @@
 Release Notes
 ---
 
+## [1.0.1](https://github.com/banditSC86/glasswool/compare/1.0.0...1.0.1) (2023-03-16)
+
+
+### Bug Fixes
+
+* **release:** add install ([5205518](https://github.com/banditSC86/glasswool/commit/52055188ec17d04eafefff4ec5f6094b278be8ff))
+* **release:** fix README ([1beac70](https://github.com/banditSC86/glasswool/commit/1beac70dee4c05b151b1b33571ec9ffe2a18339f))
+
 ## 1.0.0 (2023-03-16)
 
 
