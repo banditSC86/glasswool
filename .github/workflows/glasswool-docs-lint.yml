@@ -143,12 +143,29 @@ jobs:
 
   simulate_release:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       # Set up npm / semantic-release here ?
+      - name: Install Conda environment from environment.yml
+        uses: mamba-org/provision-with-micromamba@main
+        with:
+          cache-downloads: true
+          cache-env: true
+          environment-file: conda-linux-64.lock
+          environment-name: glasswool
+          channels: conda-forge
+            nodefaults
 
+      # Change env to glasswool to pick up poetry from there
+      - name: activate mamba environment
+        run: |
+          mamba env export
+          python -V -V
       - name: Configure git info
         run: |
           set -euo pipefail
