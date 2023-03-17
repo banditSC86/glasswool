@@ -69,9 +69,9 @@ jobs:
 
       - name: checkout
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          token: ${{ steps.generate_token.outputs.token }}
+#        with:
+#          fetch-depth: 0
+#          token: ${{ steps.generate_token.outputs.token }}
 
       - name: Configure git info
         run: |
@@ -108,7 +108,6 @@ jobs:
 
       - name: install glasswool
         run: poetry install --without dev --without test
-
 
       - name: build and push dev docs
         run: |
