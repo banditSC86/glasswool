@@ -109,6 +109,7 @@ jobs:
       - name: install glasswool
         run: poetry install --without dev --without test
 
+
       - name: build and push dev docs
         run: |
           mkdocs gh-deploy --message 'docs: glasswool@${{ github.sha }}'
