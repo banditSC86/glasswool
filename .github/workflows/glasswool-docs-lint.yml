@@ -82,6 +82,7 @@ jobs:
           git config user.name 'glasswool-docs-bot[bot]'
           git config user.email 'glasswool-docs-bot[bot]@users.noreply.github.com'
 
+
       - name: Install Conda environment from environment.yml
         uses: mamba-org/provision-with-micromamba@main
         with:
