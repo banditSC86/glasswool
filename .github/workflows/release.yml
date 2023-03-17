@@ -1,3 +1,4 @@
+---
 name: Release
 
 on:
@@ -36,8 +37,7 @@ jobs:
           cache-env: true
           environment-file: conda-linux-64.lock
           environment-name: glasswool
-          channels:
-            conda-forge
+          channels: conda-forge
             nodefaults
 
       # Change env to glasswool to pick up poetry from there
@@ -46,15 +46,15 @@ jobs:
           mamba env export
           python -V -V
 
-#      - uses: syphar/restore-pip-download-cache@v1
-#        with:
-#          requirement_files: poetry.lock
-#          custom_cache_key_element: no-backends-${{ steps.install_python.outputs.python-version }}
-#
-#      - uses: syphar/restore-virtualenv@v1
-#        with:
-#          requirement_files: poetry.lock
-#          custom_cache_key_element: core
+      #      - uses: syphar/restore-pip-download-cache@v1
+      #        with:
+      #          requirement_files: poetry.lock
+      #          custom_cache_key_element: no-backends-${{ steps.install_python.outputs.python-version }}
+      #
+      #      - uses: syphar/restore-virtualenv@v1
+      #        with:
+      #          requirement_files: poetry.lock
+      #          custom_cache_key_element: core
 
       - name: run semantic-release
         run: ./ci/release/run.sh

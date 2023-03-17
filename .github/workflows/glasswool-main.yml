@@ -1,3 +1,4 @@
+---
 name: GlassWool
 
 on:
@@ -45,21 +46,21 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-#           - windows-latest
+        #           - windows-latest
         python-version:
-#           - "3.8"
-#           - "3.9"
+          #           - "3.8"
+          #           - "3.9"
           - "3.10"
-#           - "3.11"
+    #           - "3.11"
     steps:
       - name: checkout
         uses: actions/checkout@v3
 
-#      - name: install python
-#        uses: actions/setup-python@v4
-#        id: install_python
-#        with:
-#          python-version: ${{ matrix.python-version }}
+      #      - name: install python
+      #        uses: actions/setup-python@v4
+      #        id: install_python
+      #        with:
+      #          python-version: ${{ matrix.python-version }}
 
       - name: Install Conda environment from environment.yml
         uses: mamba-org/provision-with-micromamba@main
@@ -67,16 +68,16 @@ jobs:
           cache-downloads: true
           cache-env: true
           environment-file: conda-linux-64.lock
-# for matrix should be
-#         environmant-file: python-version: conda-${{matrix.platform}}-${{ matrix.python-version }}.lock
+          # for matrix should be
+          #         environmant-file: python-version:
+          #            conda-${{matrix.platform}}-${{ matrix.python-version }}.lock
           environment-name: glasswool
-#          micromamba-version: "*"
-          channels:
-            conda-forge
+          #          micromamba-version: "*"
+          channels: conda-forge
             nodefaults
-#          micromamba-args: "--strict-channel-priority"
-#          extra-specs: |
-#            python=3.10
+      #          micromamba-args: "--strict-channel-priority"
+      #          extra-specs: |
+      #            python=3.10
 
       # Change env to glasswool to pick up poetry from there
       - name: activate mamba environment
@@ -94,16 +95,16 @@ jobs:
           requirement_files: poetry.lock
           custom_cache_key_element: core
 
-# Don't think I need these but handy to know how to do it
-#      - name: install ${{ matrix.os }} system dependencies
-#        if: matrix.os == 'ubuntu-latest'
-#        run: |
-#          set -euo pipefail
-#          sudo apt-get update -y -q
-#          sudo apt-get install -y -q build-essential graphviz libgeos-dev
-#      - name: install ${{ matrix.os }} system dependencies
-#        if: matrix.os == 'windows-latest'
-#        run: choco install graphviz
+      # Don't think I need these but handy to know how to do it
+      #      - name: install ${{ matrix.os }} system dependencies
+      #        if: matrix.os == 'ubuntu-latest'
+      #        run: |
+      #          set -euo pipefail
+      #          sudo apt-get update -y -q
+      #          sudo apt-get install -y -q build-essential graphviz libgeos-dev
+      #      - name: install ${{ matrix.os }} system dependencies
+      #        if: matrix.os == 'windows-latest'
+      #        run: choco install graphviz
 
       - name: install glasswool
         run: poetry install --without dev --without docs
@@ -118,7 +119,7 @@ jobs:
           NUMBA_DISABLE_JIT: 1
         if: matrix.os != 'windows-latest'
         run: just ci-check
-#        run: just ci-check -m "'core or benchmark'" -n auto
+      #        run: just ci-check -m "'core or benchmark'" -n auto
 
       - name: upload code coverage
         if: success()
@@ -132,4 +133,3 @@ jobs:
         with:
           name: no-backends-${{ matrix.os }}-${{ matrix.python-version }}
           path: junit.xml
-

@@ -8,10 +8,8 @@ Outlier filter
 [![Build status](https://github.com/banditSC86/glasswool/actions/workflows/glasswool-main.yml/badge.svg)](https://github.com/banditSC86/glasswool/actions/workflows/glasswool-main.yml?query=branch%3Amain)
 [![codecov](https://codecov.io/gh/banditSC86/glasswool/branch/main/graph/badge.svg?token=WNQNG986UN)](https://codecov.io/gh/banditSC86/glasswool)
 
-
-Recursively filter outliers 
+Recursively filter outliers
 
 ## Installation
 
-```pip install glasswool```
-
+`pip install glasswool`

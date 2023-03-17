@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 import argparse
@@ -64,7 +63,7 @@ def main(next_ver: v.Version, root: Path) -> int:
     infos = sorted(itertools.chain.from_iterable(msgs))
 
     for path, removed_in in infos:
-        print(
+        print(  # noqa: T201
             f"{path}:{removed_in.lineno:d} (removed_in={removed_in.version} <= next={next_ver})",
             file=sys.stderr,
         )
