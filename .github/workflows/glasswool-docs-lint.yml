@@ -52,6 +52,9 @@ jobs:
 
   docs_push:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
     if: github.event_name == 'push'
     concurrency: docs-${{ github.repository }}
 #    needs:
@@ -73,12 +76,12 @@ jobs:
 #          fetch-depth: 0
 #          token: ${{ steps.generate_token.outputs.token }}
 
-      - name: Configure git info
-        run: |
-          set -euo pipefail
-
-          git config user.name 'glasswool-docs-bot[bot]'
-          git config user.email 'glasswool-docs-bot[bot]@users.noreply.github.com'
+#      - name: Configure git info
+#        run: |
+#          set -euo pipefail
+#
+#          git config user.name 'glasswool-docs-bot[bot]'
+#          git config user.email 'glasswool-docs-bot[bot]@users.noreply.github.com'
 
       - name: Install Conda environment from environment.yml
         uses: mamba-org/provision-with-micromamba@main
