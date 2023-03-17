@@ -24,10 +24,41 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
     steps:
       - name: checkout
         uses: actions/checkout@v3
 # install mamba / poetry lock here ?
+      - name: Install Conda environment from environment.yml
+        uses: mamba-org/provision-with-micromamba@main
+        with:
+          cache-downloads: true
+          cache-env: true
+          environment-file: conda-linux-64.lock
+          environment-name: glasswool
+          channels:
+            conda-forge
+            nodefaults
+
+      - name: activate mamba environment
+        run: |
+          mamba env export
+          python -V -V
+
+      - uses: syphar/restore-pip-download-cache@v1
+        with:
+          requirement_files: poetry.lock
+          custom_cache_key_element: no-backends-${{ steps.install_python.outputs.python-version }}
+
+      - uses: syphar/restore-virtualenv@v1
+        with:
+          requirement_files: poetry.lock
+          custom_cache_key_element: core
+
+      - name: install glasswool
+        run: poetry install --without docs --without test
 
       - name: pre-commit checks
         run: pre-commit run --all-files --show-diff-on-failure --color=always
