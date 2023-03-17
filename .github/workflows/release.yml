@@ -29,13 +29,12 @@ jobs:
           token: ${{ steps.generate_token.outputs.token }}
 
       - name: Install Conda environment from environment.yml
+        # Just for python / poetry really
         uses: mamba-org/provision-with-micromamba@main
         with:
           cache-downloads: true
           cache-env: true
           environment-file: conda-linux-64.lock
-# for matrix should be
-#         environmant-file: python-version: conda-${{matrix.platform}}-${{ matrix.python-version }}.lock
           environment-name: glasswool
           channels:
             conda-forge
@@ -56,15 +55,6 @@ jobs:
 #        with:
 #          requirement_files: poetry.lock
 #          custom_cache_key_element: core
-
-##      - uses: cachix/install-nix-action@v20
-##        with:
-##          extra_nix_config: |
-##            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-##      - uses: cachix/cachix-action@v12
-##        with:
-##          name: ibis
-##          extraPullNames: nix-community,poetry2nix
 
       - name: run semantic-release
         run: ./ci/release/run.sh
