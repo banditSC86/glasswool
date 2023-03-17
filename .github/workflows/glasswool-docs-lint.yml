@@ -64,8 +64,8 @@ jobs:
         uses: tibdex/github-app-token@v1
         id: generate_token
         with:
-          app_id: ${{ secrets.DOCS_BOT_APP_ID }}
-          private_key: ${{ secrets.DOCS_BOT_APP_PRIVATE_KEY }}
+          app_id: ${{ secrets.DOCS_APP_ID }}
+          private_key: ${{ secrets.DOCS_APP_PRIVATE_KEY }}
 
       - name: checkout
         uses: actions/checkout@v3
@@ -79,6 +79,35 @@ jobs:
 
           git config user.name 'glasswool-docs-bot[bot]'
           git config user.email 'glasswool-docs-bot[bot]@users.noreply.github.com'
+
+      - name: Install Conda environment from environment.yml
+        uses: mamba-org/provision-with-micromamba@main
+        with:
+          cache-downloads: true
+          cache-env: true
+          environment-file: conda-linux-64.lock
+          environment-name: glasswool
+          channels:
+            conda-forge
+            nodefaults
+
+      - name: activate mamba environment
+        run: |
+          mamba env export
+          python -V -V
+
+      - uses: syphar/restore-pip-download-cache@v1
+        with:
+          requirement_files: poetry.lock
+          custom_cache_key_element: no-backends-${{ steps.install_python.outputs.python-version }}
+
+      - uses: syphar/restore-virtualenv@v1
+        with:
+          requirement_files: poetry.lock
+          custom_cache_key_element: core
+
+      - name: install glasswool
+        run: poetry install --without dev --without test
 
       - name: build and push dev docs
         run: |
